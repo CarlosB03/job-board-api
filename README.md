@@ -20,7 +20,7 @@ A RESTful API for job postings and job searches, built with Node.js, Express, Pr
 
 1. Clone the repository and install dependencies:
 
-```bash
+```
 npm install
 
 
