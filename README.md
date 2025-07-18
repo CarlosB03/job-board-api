@@ -20,7 +20,7 @@ A RESTful API for job postings and job searches, built with Node.js, Express, Pr
 
 1. Clone the repository and install dependencies:
 
-```
+
 npm install
 
 
@@ -35,11 +35,12 @@ npx prisma migrate dev --name init
 Start the server:
 npm run dev
 
+---
 
-API Endpoints
-Authentication
+## API Endpoints
+### Authentication
 
-POST /api/auth/register
+#### POST /api/auth/register
 Register a new user (company or jobseeker).
 Request body example:
 {
@@ -48,7 +49,7 @@ Request body example:
   "role": "COMPANY"
 }
 
-POST /api/auth/login
+#### POST /api/auth/login
 Login and receive a JWT token.
 Request body example:
 {
@@ -56,15 +57,15 @@ Request body example:
   "password": "yourpassword"
 }
 
-Jobs
-GET /api/jobs
+### Jobs
+#### GET /api/jobs
 Get jobs with optional filtering and field selection.
 Query parameters:
 company — filter by company name
 location — filter by job location
 fields — comma-separated fields to include in response (e.g., title,company,pay)
 
-POST /api/jobs (COMPANY only)
+#### POST /api/jobs (COMPANY only)
 Create a new job listing.
 Requires Authorization: Bearer <token> header.
 Request body example:
@@ -79,7 +80,7 @@ Request body example:
   "skills": "React, Tailwind"
 }
 
-PUT /api/jobs/:id (COMPANY only)
+#### PUT /api/jobs/:id (COMPANY only)
 Update a job listing partially or fully.
 Requires Authorization: Bearer <token> header.
 Request body can include any fields to update, for example:
@@ -87,18 +88,24 @@ Request body can include any fields to update, for example:
   "pay": "$130,000"
 }
 
-Notes
+---
+
+## Notes
 Use the JWT token returned on login in the Authorization header as Bearer <token> to access protected endpoints.
 JOBSEEKER role users can only perform GET requests on jobs.
 COMPANY role users have full CRUD access on their own job listings.
 Passwords are securely hashed using bcrypt.
 Proper error messages and HTTP status codes are returned for validation, authorization, and server errors.
 
-Testing
+---
+
+## Testing
 Use Postman or any API client:
 Register a user (company or jobseeker).
 Login to get the JWT token.
 Use the token for authorized requests to create, update, or delete jobs (COMPANY only).
 Use GET requests freely to list or filter jobs.
 
-MIT License
+---
+
+## MIT License
